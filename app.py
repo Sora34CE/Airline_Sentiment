@@ -9,7 +9,7 @@ model = AirlineModel()
 
 @app.get('/')
 def index():
-    return {'message': 'Hello, stranger'}
+    return {'message': 'Hello, traveler!'}
 # Expose prediction functionality, make predictions from inputted
 # Airline name and return the predicted sentiment
 
@@ -18,7 +18,7 @@ def predict_sentiment(name):
     airline = Airline()
     data = airline.dict()
     if name.upper() not in data.keys():
-        return "Airline does not exist in data."
+        return "This airline does not exist in the data."
     data.update({name.upper() : 1})
     pred = model.predict_sentiment(data)
     if pred == 1:
